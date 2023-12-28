@@ -6,7 +6,7 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { BiSupport } from "react-icons/bi";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
-import Homeproduct from './Homeproducts';
+import Topproducts from './Topproducts';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../services/firebase_config';
 
@@ -15,6 +15,13 @@ import { db } from '../../services/firebase_config';
 import './home.css'
 
 const Home = () => {
+
+    const [topProdutos, setTopProdutos] = useState([]);
+
+
+
+
+
     const [qtdCelular, setQtdCelular] = useState(null);
     const countDocuments = async () => {
         try {
@@ -28,6 +35,14 @@ const Home = () => {
 
     useEffect(() => {
         countDocuments();
+        async function fetch() {
+            const top_data = await Topproducts()
+            setTopProdutos(top_data);
+        }
+        window.scrollTo(0, 0);
+        fetch()
+
+
     }, []);
 
     return (
@@ -121,35 +136,40 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='product'>
+            <div className='productBox'>
                 <h2>Top Produtos</h2>
-                <div className='container'>
-                    {
-                        Homeproduct.map((product) => {
-                            return (
-                                <div className='box' key={product.id}>
-                                    <div className='img_box'>
-                                        <img src={product.Img} alt={product.Title} />
-                                        <div className='icon'>
-                                            <li><AiOutlineShoppingCart /></li>
-                                            <li><BsEye /></li>
-                                            <li><AiOutlineHeart /></li>
+                <div className='contant_box'>
+                    <div className='contant'>
+                        {
+                            topProdutos.map((product) => {
+                                return (
+                                    <div className='box' key={product.id}>
+                                        <div className="content_box">
+                                            <div className='img_box'>
+                                                <img src={product.image} alt={product.Title} />
+                                            </div>
+                                            <div className="more_box">
+                                                <div className='icon'>
+                                                    <li><AiOutlineShoppingCart /></li>
+                                                    <li><BsEye /></li>
+                                                    <li><AiOutlineHeart /></li>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className='detail'>
+                                            <p>{product.tag}</p>
+                                            <h3>{product.name}</h3>
+                                            <h4>{product.price}</h4>
                                         </div>
                                     </div>
-                                    <div className='detail'>
-                                        <p>{product.Cat}</p>
-                                        <h3>{product.Title}</h3>
-                                        <h4>{product.Price}</h4>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
-
+                                )
+                            })
+                        }
+                    </div>
+                    <Link to="/product" className='link'>Ver mais... <BsArrowRight /></Link>
                 </div>
-                <Link className='link' to={'/product'}>Ver mais...</Link>
-
             </div>
+
             <div className='banner'>
                 <div className='container'>
                     <div className='detail'>

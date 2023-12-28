@@ -44,7 +44,7 @@ function SetImage() {
                     setImgURL(downloadURL);
                     console.log('imagem enviada')
 
-                    addDoc(collection(db, "celulares"), {
+                    addDoc(collection(db, "top_produtos"), {
                         name: "smartwatch 15",
                         tag: "relogio",
                         price: "$900",
