@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../services/firebase_config";
+import { auth } from "../../services/firebase_config";
 import { collection, addDoc } from "firebase/firestore";
-import { db } from "../services/firebase_config";
+import { db } from "../../services/firebase_config";
 
 import "./register.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
@@ -29,6 +29,8 @@ export function Register() {
       });
       localStorage.setItem('email', email);
       navigate('/')
+      window.location.reload(true);
+      
     } catch (error) {
       console.error("Erro ao criar usuário:", error);
     }

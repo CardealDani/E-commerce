@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.footer {
+    padding: 30px 40px;
+    width: 100%;
+    background: #ecf2f7;
+}
+
+.footer .container {
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.footer .container .about {
+    max-width: 30%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+}
+
+.footer .container .about .detail p {
+    font-size: 16px;
+    color: #010f1c;
+    margin-bottom: 12px;
+}
+
+.footer .container .about .detail .icon {
+
+    display: flex;
+    transform: scale(1.1);
+}
+
+.footer .container .about .detail .icon li {
+    margin-left: 20px;
+    list-style: none;
+    padding: 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px 1.95px;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.footer .container .about .detail .icon li:hover {
+    background: #0989ff;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+
+.footer .container .more {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 100px;
+
+}
+
+
+.footer .container .account {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.footer .container .account h3 {
+    font-size: 32px;
+    color: #010f1c;
+    margin-bottom: 10px;
+
+}
+
+.footer .container .account ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    gap: 10px;
+
+}
+
+.footer .container .account ul li {
+    color: #010f1c;
+    font-size: 14px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.footer .container .account ul li:hover {
+    color: #0989ff;
+}

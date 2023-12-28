@@ -8,8 +8,8 @@ import { CiLogout } from 'react-icons/ci';
 import { Link, redirect } from 'react-router-dom';
 import { doc, getDoc, setDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { useSignOut } from 'react-firebase-hooks/auth';
-import { db } from './services/firebase_config';
-import { auth } from './services/firebase_config';
+import { db } from '../../services/firebase_config';
+import { auth } from '../../services/firebase_config';
 
 
 import './nav.css';

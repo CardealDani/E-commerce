@@ -1,21 +1,37 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsArrowRight, BsEye } from 'react-icons/bs'
-import { FaBoxes } from "react-icons/fa";
+import { FaBoxes, FaLinkedinIn } from "react-icons/fa";
 import { Link } from 'react-router-dom'
 import { BsCurrencyDollar } from "react-icons/bs";
 import { CiPercent } from "react-icons/ci";
 import { BiSupport } from "react-icons/bi";
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
-import Nav from './Nav';
 import Homeproduct from './Homeproducts';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../services/firebase_config';
+
+
 
 import './home.css'
 
 const Home = () => {
+    const [qtdCelular, setQtdCelular] = useState(null);
+    const countDocuments = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, 'celulares'));
+            const numberOfDocuments = querySnapshot.size;
+            setQtdCelular(numberOfDocuments);
+        } catch (error) {
+            console.error('Erro ao obter documentos:', error);
+        }
+    };
+
+    useEffect(() => {
+        countDocuments();
+    }, []);
 
     return (
         <>
-        <Nav/>
             <div className='top_banner'>
                 <div className='container'>
                     <div className='detail'>
@@ -36,7 +52,7 @@ const Home = () => {
                             <img src='./img/celular.png' alt='celular' />
                         </div>
                         <div className='detail'>
-                            <p>20 Products</p>
+                            <p>{qtdCelular !== null ? `${qtdCelular} Produtos` : 'Carregando...'}</p>
                         </div>
                     </div>
                     <div className='box'>
@@ -44,7 +60,7 @@ const Home = () => {
                             <img src='./img/headphone.png' alt='headphone' />
                         </div>
                         <div className='detail'>
-                            <p>12 Products</p>
+                            <p>12 Produtos</p>
                         </div>
                     </div>
                     <div className='box'>
@@ -52,7 +68,7 @@ const Home = () => {
                             <img src='./img/airpods.png' alt='airpods' />
                         </div>
                         <div className='detail'>
-                            <p>12 Products</p>
+                            <p>12 Produtos</p>
                         </div>
                     </div>
                     <div className='box'>
@@ -60,7 +76,7 @@ const Home = () => {
                             <img src='./img/smartwatch.png' alt='smartwatch' />
                         </div>
                         <div className='detail'>
-                            <p>12 Products</p>
+                            <p>12 Produtos</p>
                         </div>
                     </div>
                 </div>
@@ -130,6 +146,27 @@ const Home = () => {
                         })
                     }
 
+                </div>
+                <Link className='link' to={'/product'}>Ver mais...</Link>
+
+            </div>
+            <div className='banner'>
+                <div className='container'>
+                    <div className='detail'>
+                        <div></div>
+                        <div className='text'>
+                            <h4>Último Lançamento!</h4>
+                            <h3>Iphone 15 PRO Titânio </h3>
+                            <p>$ 7.999,99</p>
+                            <Link to="/product" className='link'> Compre Agora<BsArrowRight /></Link>
+                        </div>
+                        <div className='description'>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+                        </div>
+                    </div>
+                    <div className='img_box'>
+                        <img src='./img/iphone15.png' alt='iphone15' />
+                    </div>
                 </div>
             </div>
         </>

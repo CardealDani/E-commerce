@@ -34,35 +34,7 @@ const Homeproduct =
     Cat:"Tablet",
     Price:"$1100",
     Img:'./img/tabA.png'
-},
-{
-    id:5,
-    Title:"Galaxy Tab A",
-    Cat:"Tablet",
-    Price:"$1200",
-    Img:'./img/tabA.png'
-},
-{
-    id:6,
-    Title:"Galaxy Tab A",
-    Cat:"Tablet",
-    Price:"$1000",
-    Img:'./img/tabA.png'
-},
-{
-    id:7,
-    Title:"Galaxy Tab A",
-    Cat:"Tablet",
-    Price:"$1300",
-    Img:'./img/tabA.png'
-},
-{
-    id:8,
-    Title:"Galaxy Tab A",
-    Cat:"Tablet",
-    Price:"$2000",
-    Img:'./img/tabA.png'
-},
+}
 ]
 
 export default Homeproduct

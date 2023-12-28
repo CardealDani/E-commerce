@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom"; // Alteração aqui
-import { auth } from "../services/firebase_config";
+import { auth } from "../../services/firebase_config";
 import "./login.css";
 import { FaLongArrowAltRight } from "react-icons/fa";
 
@@ -14,13 +14,16 @@ export function Login() {
 
   const navigate = useNavigate(); // Alteração aqui
 
-  function handleSignIn(e) { 
+  function handleSignIn(e) {
     e.preventDefault();
     signInWithEmailAndPassword(email, password)
       .then(() => {
-        localStorage.setItem('email', email)
+        if (signInWithEmailAndPassword(email, password))
+          localStorage.setItem('email', email)
 
         navigate('/');
+        window.location.reload(true);
+
       })
       .catch((error) => {
         console.error('Erro ao fazer login:', error);
@@ -37,7 +40,7 @@ export function Login() {
   return (
     <div className="container_login">
       <header className="header">
-      <Link to={'/'}><img src='./img/logo.jpg' alt="LK-INFORTECH" className="logoImg" /></Link>
+        <Link to={'/'}><img src='./img/logo.jpg' alt="LK-INFORTECH" className="logoImg" /></Link>
 
         <span>Por favor digite suas informações de login</span>
       </header>
